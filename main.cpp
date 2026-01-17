@@ -1,4 +1,4 @@
-﻿#include "raylib.h"
+#include "raylib.h"
 #include "igrica.h"
 
 int main()
@@ -6,7 +6,7 @@ int main()
 	InitWindow(800, 450, "2D Platformer");
 	SetTargetFPS(60);
 
-	Igrac igrac = { {100,300,30,50}, 0, false };
+	Igrac igrac = { {100,300,30,40}, 0, false };
 	Vector2 kamera = { 0,0 };
 
 	std::vector<Level> leveli(3);
@@ -16,17 +16,17 @@ int main()
 	leveli[0].platforme = {Platforma({50,350,700,20}),Platforma({200,250,100,20}),Platforma({500,250,100,20}), Platforma({700,160,300,20}),Platforma({700,400,300,20})};
 	leveli[0].novcici = {Novcic({350,310}),Novcic({750,130}),Novcic({900,130}),Novcic({950,370}), Novcic({250,210}),Novcic({550,210})};
 
-	//drugi level
+	//drugi
 	leveli[1].potrebno_novcica = 9;
 	leveli[1].platforme = {Platforma({50,350,700,20}),Platforma({150,270,100,20}),Platforma({400,200,100,20}), Platforma({600,250,100,20}),Platforma({150,100,100,20}),Platforma({770,150,100,20})};
 	leveli[1].novcici = {Novcic({190,70}),Novcic({800,110}),Novcic({420,160}),Novcic({620,210}), Novcic({200,230}),Novcic({500,230}),Novcic({550,160}),Novcic({600,160}),Novcic({350,310})};
 
 	//treci
 	leveli[2].potrebno_novcica = 12;
-	leveli[2].platforme = { Platforma({50,350,400,20})};
-	leveli[2].novcici = { Novcic({200, 320})};
+	leveli[2].platforme = { Platforma({50,350,300,20}), Platforma({550,350,300,20}), Platforma({1070,350,300,20}), Platforma({1170,260,100,20}), Platforma({970,180,100,20}), Platforma({670,180,100,20}), Platforma({360,180,100,20}), Platforma({110,110,100,20}), Platforma({1500,260,1000,20}) };
+	leveli[2].novcici = { Novcic({200, 320}), Novcic({700, 320}), Novcic({1220, 320}), Novcic({1220, 230}), Novcic({1020, 150}), Novcic({720, 150}), Novcic({380, 150}), Novcic({440, 150}), Novcic({130, 80}), Novcic({190, 80}), Novcic({50, 20}), Novcic({1700, 230}) };
 
-	int trenutni_level = 0;
+	int trenutni_level = 2;
 
 	Texture2D background = LoadTexture("D:\\OOP seminar\\PlatformerRaylib\\Debug\\pozadina.png");
 	if (background.width == 0 || background.height == 0)
