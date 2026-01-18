@@ -1,4 +1,4 @@
-﻿#include "igrica.h"
+#include "igrica.h"
 #include <vector>
 
 
@@ -25,9 +25,29 @@ void azuriraj_igraca(Igrac& igrac, const std::vector<Platforma>& platforme)
 		Platforma p = platforme[i]; 
 		if (CheckCollisionRecs(igrac.oblik, p.oblik)) 
 		{
-			igrac.oblik.y = p.oblik.y - igrac.oblik.height;
-			igrac.skok_pad = 0;
-			igrac.na_podu = true;
+			if (igrac.skok_pad > 0 && igrac.oblik.y + igrac.oblik.height - igrac.skok_pad<= p.oblik.y)
+			{
+				igrac.oblik.y = p.oblik.y - igrac.oblik.height;
+				igrac.skok_pad = 0;
+				igrac.na_podu = true;
+			}
+			else if (igrac.skok_pad < 0 && igrac.oblik.y <= p.oblik.y + p.oblik.height- igrac.skok_pad)
+			{
+				igrac.oblik.y = p.oblik.y + p.oblik.height;
+				igrac.skok_pad = 0;
+
+			}
+			else
+			{
+				if (igrac.oblik.x <= p.oblik.x)
+				{
+					igrac.oblik.x = p.oblik.x - igrac.oblik.width;
+				}
+				else
+				{
+					igrac.oblik.x = p.oblik.x + p.oblik.width;
+				}
+			}
 		}
 	}
 
@@ -94,6 +114,8 @@ void nacrtaj_level(const Igrac& igrac, const Level& level, Vector2 kamera)
 	{
 		level.novcici[i].Nacrtaj(kamera);
 	}
+	Texture2D igrac_slika = LoadTexture("D:\\OOP seminar\\luigi.png");
 
-	DrawRectangle(igrac.oblik.x - kamera.x, igrac.oblik.y, igrac.oblik.width, igrac.oblik.height, BLUE);
+	DrawTextureEx(igrac_slika,{ igrac.oblik.x - kamera.x, igrac.oblik.y },0.0f,igrac.oblik.width / igrac_slika.width,WHITE);
+	//DrawRectangle(igrac.oblik.x - kamera.x, igrac.oblik.y, igrac.oblik.width, igrac.oblik.height, BLUE);
 }
