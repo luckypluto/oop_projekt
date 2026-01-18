@@ -1,0 +1,5 @@
+﻿  main.cpp
+d:\oop seminar\platformerraylib\platformerraylib\platforma.h(11): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
+d:\oop seminar\platformerraylib\platformerraylib\platforma.h(11): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+d:\oop seminar\platformerraylib\platformerraylib\novcic.h(15): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  PlatformerRaylib.vcxproj -> D:\OOP seminar\PlatformerRaylib\Debug\PlatformerRaylib.exe
